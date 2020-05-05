@@ -948,7 +948,7 @@ list_symbol(	symbols_policy_t policy,
 		here on return.
 	\return The double float value of any decimal, octal, or hex numeral
 		commencing at \e num, or 0 is there is no such numeral, or HUGE_VAL
-		if the integer value of the numeral exceeds INT_MAX. 
+		if the integer value of the numeral exceeds INT_MAX.
 
 	If the number \e N of characters \e *numend - \e num is > 0 at return then
 	then those \e N characters comprise the evaluated numeral. If \e *numend
@@ -964,14 +964,14 @@ list_symbol(	symbols_policy_t policy,
 	This function is more serviceable that \e strtol() for evaluating
 	preprocessor integer constants since a seperate invocation of the
 	latter would be required for each possible base 8, 10, 16.
-	
+
 */
 static double
 eval_numeral(char const *num, char const **numend)
 {
 	int sign = 1;
 	int base = 10;
-	int dval = 0;	
+	int dval = 0;
 	int val = 0;
 	bool overflow = false;
 	size_t num_len = 0;
@@ -1059,7 +1059,7 @@ eval_numeral(char const *num, char const **numend)
 		if (dval < base) {
 			int tmp = val;
 			val *= base;
-			if (val / base != tmp) {
+			if ((val / base != tmp) || (val<tmp)) {
 				overflow = true;
 			}
 			else {

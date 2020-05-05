@@ -1,0 +1,9 @@
+Makefile
+config.h
+config.log
+config.status
+libtool
+src/.deps/
+src/*.o
+src/sunifdef
+stamp-h1

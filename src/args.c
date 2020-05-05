@@ -494,7 +494,7 @@ usage_help(void)
 #ifdef UNIX
 #error VERSION not defined.
 #endif
-#define VERSION "3.1.3"
+#define VERSION "4.0.0"
 #endif
 /*!	Write version information about the program on \c stdout
  */

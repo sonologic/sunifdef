@@ -48,6 +48,7 @@
 #include "io.h"
 #include "opts.h"
 #include "bool.h"
+#include "string_util.h"
 #include <stdio.h>
 #include <ctype.h>
 
@@ -60,26 +61,6 @@
 /*@{*/
 
 /* Helpers ***********************************************************/
-
-/*! Count number of newline characters in string
- *
- * \param text 	Zero-terminated string.
- * \returns     Number of newline characters in text
- */
-static size_t count_lines(char const *text)
-{
-	size_t count = 0;
-	while(text != NULL)
-	{
-		text = strchr(text, '\n');
-		if (text!=NULL)
-		{
-			count++;
-			text += 1;
-		}
-	}
-	return count;
-}
 
 /*! Print an unmodified line to output with no complications
  */

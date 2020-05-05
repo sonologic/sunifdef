@@ -1,7 +1,7 @@
 AC_INIT(configure.in)
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(sunifdef, 3.1.3)
+AM_INIT_AUTOMAKE(sunifdef, 4.0.0)
 AC_CHECK_HEADERS(stdbool.h)
 
 AC_LANG_C

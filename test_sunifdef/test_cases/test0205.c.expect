@@ -1,0 +1,9 @@
+/**ARGS: -DFOO3 -kb */
+/**SYSCODE: = 33 */
+#if defined(FOO1)
+foo1();
+#else
+
+
+foo234();
+#endif

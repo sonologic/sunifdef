@@ -39,9 +39,10 @@
 #include "io.h"
 #include "report.h"
 #include "line_despatch.h"
-#include "symbol_table.h" 
+#include "symbol_table.h"
+#include "string_util.h"
 #include <string.h>
- 
+
 /*!\ingroup line_edit_module, line_edit_interface, line_edit_internals
  *\file line_edit.c
  * This file implements the Line Edit module
@@ -68,16 +69,26 @@
  *
  *	The function does the editing work for \c keywordedit(). It ensures
  *	that there is sufficient capacity in the line-buffer to contain the
- *	replacement, extending the buffer if necessary. 
+ *	replacement, extending the buffer if necessary.
  *
+ *	If where contains more lines than what, what will be extended with
+ *	newlines to match the number of lines in where.
  */
 static void
 tail_edit(char *where, const char *what)
 {
+	size_t where_lines = count_lines(where);
+	size_t what_lines = count_lines(what);
+	char *what_extended = allocate(strlen(what) + what_lines - 1);
+	strcpy(what_extended, what);
+	for(size_t i=0; i<(where_lines-what_lines); i++) {
+		strcat(what_extended, "\n");
+	}
 	assert(GET_PUBLIC(io,line_start) <= where &&
 			where < GET_PUBLIC(io,line_end));
-	ensure_buf(strlen(what));
-	strcpy(where,what);
+	ensure_buf(strlen(what_extended));
+	strcpy(where,what_extended);
+	release((void**)(&what_extended));
 }
 
 /*@}*/
@@ -97,7 +108,7 @@ void
 delete_paren(char *lparen, char *rparen)
 {
 #if 0
-	if (*lparen == '(' && *rparen == ')' ) {	
+	if (*lparen == '(' && *rparen == ')' ) {
 		if ((lparen[-1] == ' ' ||
 			lparen[-1] == '(' ||
 			lparen[1] == ' ' ||
@@ -108,7 +119,7 @@ delete_paren(char *lparen, char *rparen)
 			rparen[1] == ' ' ||
 			rparen[1] == ')' ||
 			rparen[1] == '\n'))
-			
+
 		{
 			*lparen = DELETEABLE_LPAREN;
 			*rparen = DELETEABLE_RPAREN;
@@ -132,7 +143,7 @@ delete_paren(char *lparen, char *rparen)
 void
 restore_paren(void)
 {
-	char *buf = GET_PUBLIC(io,line_start);	
+	char *buf = GET_PUBLIC(io,line_start);
 	for (	;*buf; ++buf) {
 		if (*buf == DELETEABLE_LPAREN) {
 			*buf = '(';
@@ -157,7 +168,7 @@ cut_text(char *start, char *end)
 
 /*!\ingroup line_edit_internals_state_utils */
 /*@{*/
-/*! The Line Edit module has no private state */ 
+/*! The Line Edit module has no private state */
 NO_PRIVATE_STATE(line_edit);
 /*@}*/
 

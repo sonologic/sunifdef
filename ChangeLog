@@ -958,5 +958,19 @@ sunifdef v3.1.3 Mike Kinghan 2008-01-19
 *	Fix:
 		DEF0046: The --help message contained an occurrence of '--constants'
 		that ought to have been '--constant'.
+sunifdef v4.0.0 Koen Martens 2020-05-05
+*	New:
+		Forked project.
+*	Fix:
+		When using --kb, multi-line constructs would be replaced
+		by a single blank line, and using --kc would not comment out parts
+		of excluded multi-line comments.
+*	Fix:
+		Bug in integer overflow detection resulted in silently
+		producing invalid output.
+*	Fix:
+		When using --kb, under certain conditions multi-line
+		#elif constructions would be replaced by a single #else.
+
 */
 

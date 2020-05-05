@@ -61,6 +61,25 @@
 
 /* Helpers ***********************************************************/
 
+/*! Count number of newline characters in string
+ *
+ * \param text 	Zero-terminated string.
+ * \returns     Number of newline characters in text
+ */
+static size_t count_lines(char const *text)
+{
+	size_t count = 0;
+	while(text != NULL)
+	{
+		text = strchr(text, '\n');
+		if (text!=NULL)
+		{
+			count++;
+			text += 1;
+		}
+	}
+	return count;
+}
 
 /*! Print an unmodified line to output with no complications
  */
@@ -192,10 +211,10 @@ flushline_live(bool keep, char const *insert_text)
 	else {
 		discard_policy_t discard_policy = GET_PUBLIC(args,discard_policy);
 		if (discard_policy == DISCARD_BLANK) {
-			++SET_PUBLIC(line_despatch,lines_changed);
-			putc('\n', GET_PUBLIC(io,output));
-			for (	;extension_lines; --extension_lines) {
+		for(size_t lines=count_lines(GET_PUBLIC(io,line_start)); lines; lines--)
+		{
 				putc('\n', GET_PUBLIC(io,output));
+				++SET_PUBLIC(line_despatch,lines_changed);
 			}
 		}
 		else if (discard_policy == DISCARD_DROP) {
@@ -203,9 +222,27 @@ flushline_live(bool keep, char const *insert_text)
 			++SET_PUBLIC(line_despatch,lines_dropped);
 		}
 		else {
-			fputs("//sunifdef < ",GET_PUBLIC(io,output));
-			++SET_PUBLIC(line_despatch,lines_changed);
-			printline_fast();
+			char *text = GET_PUBLIC(io,line_start);
+			while(text && text[0])
+			{
+				char *newline = strchr(text, '\n');
+				if(newline!=NULL)
+				{
+					newline[0] = 0;
+				}
+				fputs("//sunifdef < ",GET_PUBLIC(io,output));
+				fputs(text,GET_PUBLIC(io,output));
+				fputs("\n",GET_PUBLIC(io,output));
+				if(newline!=NULL)
+				{
+					newline[0] = '\n';
+				}
+				else
+				{
+					break;
+				}
+				text = newline + 1;
+			}
 		}
 	}
 }

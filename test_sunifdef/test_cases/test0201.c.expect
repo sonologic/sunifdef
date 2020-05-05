@@ -1,0 +1,10 @@
+/**ARGS: -DFOO -DBAR -DFIXME */
+/**SYSCODE: = 19 */
+int main(void)
+{
+  bar();
+
+/* multi
+line
+comment */
+}

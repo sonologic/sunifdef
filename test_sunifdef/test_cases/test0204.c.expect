@@ -1,0 +1,17 @@
+/**ARGS: -UFOO -UBAR -UFIXME -kc */
+/**SYSCODE: = 2 */
+//sunifdef < #if defined(FOO) \
+//sunifdef <     defined(BAR)
+//sunifdef < int main(void)
+//sunifdef < #else
+int main(int argc, char* argv)
+//sunifdef < #endif
+{
+  bar();
+
+//sunifdef < #ifdef FIXME
+//sunifdef < /* multi
+//sunifdef < line
+//sunifdef < comment */
+//sunifdef < #endif
+}

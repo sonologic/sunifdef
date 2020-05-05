@@ -1,0 +1,17 @@
+/**ARGS: -DFOO -DBAR -UFIXME -kb */
+/**SYSCODE: = 35 */
+
+
+int main(void)
+
+
+
+{
+  bar();
+
+
+
+
+
+
+}

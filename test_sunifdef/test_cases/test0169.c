@@ -1,5 +1,5 @@
 /**ARGS: --discard comment -DFOO1 -UFOO2 -DBAR1 -UBAR2 */
-/**SYSCODE: = 1 | 32 */
+/**SYSCODE: = 0 */
 #ifdef FOO1
 	#ifndef FOO2
 	KEEP ME
@@ -12,4 +12,4 @@
 	#else
 	DELETE ME
 	#endif
-#endif 
+#endif

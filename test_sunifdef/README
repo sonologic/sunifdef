@@ -1,0 +1,20 @@
+Testing Sunidef
+===============
+
+By running `make check' or `make test_sunifdef' in this directory you can
+build the program test_sunifdef.
+
+You can use test_sunifdef to supply a test case to sunifdef and compare the
+output with what you expect.
+
+Run `test_sunifdef --help' to see the usage of test_sunifdef.
+
+The subdirectory test_cases contains test cases represented by pairs of files:
+testNNNN.c (the test file) and testNNNN.c.expect (the expected output file)
+
+The script test_set_1.sh will run test_sunifdef for all the test cases in the
+test_cases directory. Run `test_set_1.sh -h' to see the usage of the script.
+
+The script collate_tests.sh will collate all the test cases into a single file,
+sunifdef_test_cases.c, for easier inspection. Each test file testNNNN.c is
+listed followed by the expected file testNNNN.c.expect.

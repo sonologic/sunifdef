@@ -1,0 +1,4 @@
+/**ARGS: -DFOO=1 */
+/**SYSCODE: = 4 */
+
+

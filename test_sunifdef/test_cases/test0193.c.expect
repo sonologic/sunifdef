@@ -1,0 +1,5 @@
+/**ARGS: -DA -DB */
+/**SYSCODE: = 1 | 2 | 16 | 32 */
+//error : inserted by sunifdef: "#undef /* Comment */ A" contradicts -D symbol at ./test_cases/test0193.c(3)
+//error : inserted by sunifdef: "#undef /* Comment  extending to next line */ B"
+contradicts -D symbol at ./test_cases/test0193.c(5)

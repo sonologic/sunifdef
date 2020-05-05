@@ -1,0 +1,15 @@
+/**ARGS: --discard comment -DFOO1 -UFOO2 -DBAR1 -UBAR2 */
+/**SYSCODE: = 1 | 32 */
+//sunifdef < #ifdef FOO1
+//sunifdef < 	#ifndef FOO2
+	KEEP ME
+//sunifdef < 	#else
+//sunifdef < 	DELETE ME
+//sunifdef < 	#endif
+//sunifdef < #else
+//sunifdef < 	#ifdef BAR1
+//sunifdef < 	DELETE ME
+//sunifdef < 	#else
+//sunifdef < 	DELETE ME
+//sunifdef < 	#endif
+//sunifdef < #endif 

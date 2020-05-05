@@ -1,0 +1,5 @@
+/**ARGS: -DFOO1 -UFOO2 -DBAR1 -UBAR2 */
+/**SYSCODE: = 0 */
+#if FOO1
+KEEP ME
+#endif

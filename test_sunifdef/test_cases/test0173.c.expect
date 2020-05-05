@@ -1,0 +1,6 @@
+FOO1: ./test_cases/altfiles/test0173-1.c(1)
+FOO2: ./test_cases/altfiles/test0173-1.c(4)
+FOO3: ./test_cases/altfiles/test0173-1.c(6)
+FOO4: ./test_cases/altfiles/test0173-1.c(6)
+FOO5: ./test_cases/altfiles/test0173-1.c(8)
+FOO6: ./test_cases/altfiles/test0173-2.c(8)

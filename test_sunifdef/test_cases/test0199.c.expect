@@ -1,0 +1,5 @@
+/**ARGS: -DFOO */
+/**SYSCODE: = 1 | 16 */
+KEEP ME
+KEEP ME
+

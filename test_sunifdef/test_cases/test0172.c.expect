@@ -1,0 +1,5 @@
+FOO1: ./test_cases/test0172.c(3)
+FOO2: ./test_cases/test0172.c(6)
+FOO3: ./test_cases/test0172.c(8)
+FOO4: ./test_cases/test0172.c(8)
+FOO5: ./test_cases/test0172.c(10)

@@ -1,0 +1,7 @@
+/**ARGS: --pod -DFOO -DBAR */
+/**SYSCODE: = 1 | 16 */
+/* Not to be parsed as comment
+KEEP ME
+end */
+" Not to be parsed as quotation
+end "
